@@ -1,0 +1,1 @@
+# shikiri-auth-resource

@@ -16,6 +16,13 @@ eureka:
     service-url:
       defaultZone: ${EUREKA_URI:http://localhost:8761/eureka/}
 
+springdoc:
+  api-docs:
+    path: /auth/v3/api-docs
+  swagger-ui:
+    path: /auth/swagger-ui.html
+  version: 3.0.0
+
 shikiri:
   jwt:
     issuer: "In5pEr"

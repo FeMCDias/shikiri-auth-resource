@@ -6,7 +6,7 @@ pipeline {
                 build job: 'shikiri.auth', wait: true
             }
         }
-        stage('Build Auth') {
+        stage('Build Account') {
             steps {
                 build job: 'shikiri.account', wait: true
             }

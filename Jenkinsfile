@@ -10,6 +10,7 @@ pipeline {
             steps {
                 build job: 'shikiri.account', wait: true
             }
+        }
         stage('Build') { 
             steps {
                 sh 'mvn clean package'

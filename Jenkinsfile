@@ -1,7 +1,7 @@
 pipeline {
     agent any
     stages {
-        stage('Build Account') {
+        stage('Build Auth') {
             steps {
                 build job: 'shikiri.auth', wait: true
             }

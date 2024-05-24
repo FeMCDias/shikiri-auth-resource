@@ -3,6 +3,7 @@ package shikiri.auth;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.cache.annotation.Cacheable;
 
 import shikiri.account.AccountController;
 import shikiri.account.AccountIn;
@@ -35,6 +36,7 @@ public class AuthService {
         return response.getBody().id();
     }
 
+    @Cacheable(value = "authCache", key = "#email")
     public LoginOut authenticate(String email, String password) {
         ResponseEntity<AccountOut> response = accountController.login(LoginIn.builder()
             .email(email)
@@ -54,6 +56,7 @@ public class AuthService {
             .build();
     }
 
+    @Cacheable(value = "tokenCache", key = "#token")
     public Token solve(String token) {
         return jwtService.getToken(token);
     }

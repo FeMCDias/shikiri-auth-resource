@@ -18,3 +18,39 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
+          env:
+            - name: DISCOVERY_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: discovery-configmap
+                  key: DISCOVERY_HOST
+
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: POSTGRES_HOST
+
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: postgres-configmap
+                  key: POSTGRES_DB
+
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: POSTGRES_USER
+
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: POSTGRES_PASSWORD
+
+            - name: REDIS_HOST
+              value: "redis-service"
+  
+            - name: REDIS_PORT
+              value: "6379"
